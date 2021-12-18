@@ -52,14 +52,14 @@ class Quotecard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '${quote.text}',
+              quote.text,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 23),
             ),
             Text(
-              '${quote.text}',
+              quote.text,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.normal,
