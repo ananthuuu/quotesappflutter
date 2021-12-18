@@ -33,7 +33,15 @@ class _QuotelistState extends State<Quotelist> {
         margin: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: quotes.map((quote) => Quotecard(quote: quote)).toList(),
+          children: quotes
+              .map((quote) => Quotecard(
+                  quote: quote,
+                  delete: () {
+                    setState(() {
+                      quotes.remove(quote);
+                    });
+                  }))
+              .toList(),
         ),
       ),
     );
