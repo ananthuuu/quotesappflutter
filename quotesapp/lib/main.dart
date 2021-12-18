@@ -19,19 +19,48 @@ class _QuotelistState extends State<Quotelist> {
     Quotes(author: "ananh", text: "failure is stepping stone to success"),
   ];
 
+  Widget cardgenerator(quote) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 23),
+            ),
+            Text(
+              quote.author,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 10),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[400],
       appBar: AppBar(
         title: Text("Awesome Quotes"),
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: quotes
-            .map((quote) => Text('${quote.text}  :  ${quote.author}'))
-            .toList(),
+      body: Container(
+        margin: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: quotes.map((quote) => cardgenerator(quote)).toList(),
+        ),
       ),
     );
   }
