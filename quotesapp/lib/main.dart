@@ -19,33 +19,6 @@ class _QuotelistState extends State<Quotelist> {
     Quotes(author: "ananh", text: "failure is stepping stone to success"),
   ];
 
-  Widget cardgenerator(quote) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              quote.text,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 23),
-            ),
-            Text(
-              quote.author,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 10),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +32,40 @@ class _QuotelistState extends State<Quotelist> {
         margin: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: quotes.map((quote) => cardgenerator(quote)).toList(),
+          children: quotes.map((quote) => Quotecard(quote: quote)).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class Quotecard extends StatelessWidget {
+  late Quotes quote;
+  Quotecard({required this.quote});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              '${quote.text}',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 23),
+            ),
+            Text(
+              '${quote.text}',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 10),
+            ),
+          ],
         ),
       ),
     );
